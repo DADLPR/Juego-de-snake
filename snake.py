@@ -7,7 +7,7 @@ from random import randrange
 from turtle import *
 
 from freegames import square, vector
-
+counter = vector(0, 0)
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
@@ -45,6 +45,23 @@ def move():
 
     clear()
 
+    if counter.x % 15 == 0:
+        
+        if -200 < food.x < 190:
+            food.x += randrange(-1, 2) * 10
+        elif food.x == -200:
+            food.x += 10
+        elif food.x == 190:
+            food.x -= 10
+
+        
+        if -200 < food.y < 190:
+            food.y += randrange(-1, 2) * 10
+        elif food.y == -200:
+            food.y += 10
+        elif food.y == 190:
+            food.y -= 10
+            
     for body in snake:
         square(body.x, body.y, 9, 'black')
 
