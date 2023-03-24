@@ -12,6 +12,23 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 
+def colorBody():
+    color = randrange(1,6)
+    if color == 1:
+        colorString = 'black'
+    elif color == 2:
+        colorString = 'blue'
+    elif color == 3:
+        colorString = 'green'
+    elif color == 4:
+        colorString = 'violet'
+    elif color == 5:
+        colorString = 'brown'
+    return colorString
+colorB = colorBody()
+colorF = colorBody()
+while colorF == colorB:
+    colorF = colorBody()
 
 def change(x, y):
     """Change snake direction."""
@@ -63,9 +80,10 @@ def move():
             food.y -= 10
             
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        square(body.x, body.y, 9, colorB)
 
-    square(food.x, food.y, 9, 'green')
+
+    square(food.x, food.y, 9, colorF)
     update()
     ontimer(move, 100)
 
